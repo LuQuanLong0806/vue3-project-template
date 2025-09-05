@@ -1,13 +1,14 @@
 # Vue3 项目模板
 
-这是一个现代化的 Vue3 项目模板，集成了最新的开发工具和最佳实践，包含**PostCSS大屏适配方案**和**Less预处理器**。
+这是一个现代化的 Vue3 项目模板，集成了最新的开发工具和最佳实践，包含**双UI库集成**、**PostCSS大屏适配方案**和**Less预处理器**。
 
 ## 🚀 主要特性
 
 - ⚡ **Vue 3** - 最新的 Vue.js 框架
 - 🔥 **Vite** - 极速的构建工具
 - 💪 **TypeScript** - 强类型支持
-- 🎨 **Element Plus** - 企业级 UI 组件库
+- 🎨 **双UI库集成** - Element Plus + View UI Plus 双UI组件库支持
+- 🔄 **UI库对比** - 详细的组件库对比和使用指南
 - 🛣️ **Vue Router 4** - 官方路由管理器
 - 📦 **Pinia** - 新一代状态管理
 - 🎯 **Auto Import** - 自动导入组件和 API
@@ -20,7 +21,8 @@
 - [Vue 3](https://vuejs.org/) - 渐进式 JavaScript 框架
 - [TypeScript](https://www.typescriptlang.org/) - JavaScript 的超集
 - [Vite](https://vitejs.dev/) - 下一代前端构建工具
-- [Element Plus](https://element-plus.org/) - Vue 3 组件库
+- [Element Plus](https://element-plus.org/) - Vue 3 企业级组件库
+- [View UI Plus](https://www.iviewui.com/view-ui-plus) - Vue 3 轻量级组件库
 - [Vue Router](https://router.vuejs.org/) - Vue.js 官方路由
 - [Pinia](https://pinia.vuejs.org/) - Vue 状态管理
 - [VueUse](https://vueuse.org/) - Vue 组合式函数集合
@@ -265,13 +267,31 @@ adapter.init('#app', {
 - **scaleY**: 纵向缩放  
 - **none**: 无缩放
 
-## 🎨 UI 组件
+## 🎨 双UI库集成
 
-项目集成了 Element Plus 组件库，提供了丰富的 UI 组件：
+项目同时集成了两个主流的 Vue 3 UI 组件库，提供丰富的选择：
 
-- 自动按需导入组件
-- 完整的 TypeScript 支持
-- 主题定制支持
+### Element Plus
+- 🏢 企业级UI组件库
+- 🎨 现代化设计风格
+- 📊 丰富的数据展示组件
+- 🌍 国际化支持
+- 🔧 完善的TypeScript支持
+
+### View UI Plus
+- 💎 简洁优雅的设计
+- 🚀 轻量级高性能
+- 🔌 易于集成
+- 📚 完整的文档
+- 🛠️ 友好的API设计
+
+### 特性支持
+- ✅ 自动按需导入组件
+- ✅ 完整的 TypeScript 支持
+- ✅ 主题定制支持
+- ✅ 响应式设计
+- ✅ 可视化UI库切换
+- ✅ 详细的对比和使用指南
 
 ## 📱 响应式设计
 
@@ -286,11 +306,36 @@ adapter.init('#app', {
 
 项目包含多个功能演示页面：
 
+### 基础功能页面
 - **首页** (\`/\`) - 项目介绍和功能特性展示
 - **关于页** (\`/about\`) - 技术栈和项目信息
 - **计数器** (\`/counter\`) - Pinia 状态管理示例
 - **大屏适配** (\`/bigscreen\`) - 大屏适配效果演示
 - **Less演示** (\`/less\`) - Less 预处理器功能展示
+
+### UI组件库演示
+- **Element Plus演示** (\`/element\`) - Element Plus 组件库完整演示
+  - 基础组件（按钮、输入框等）
+  - 表单组件（表单验证、选择器等）
+  - 数据展示（表格、统计、进度条）
+  - 反馈组件（消息提示、通知、对话框）
+
+- **View UI Plus演示** (\`/viewui\`) - View UI Plus 组件库完整演示
+  - 基础组件（按钮、输入框等）
+  - 表单组件（表单验证、选择器等）
+  - 数据展示（表格、统计、进度条）
+  - 反馈组件（消息提示、通知、对话框）
+
+- **UI库对比** (\`/comparison\`) - 详细的组件库对比分析
+  - 功能特性对比
+  - 使用场景建议
+  - 代码示例对比
+  - 选择指南
+
+### 导航特性
+- 🔄 **智能UI库切换** - 顶部标签页可切换不同UI库风格
+- 📱 **响应式导航** - 根据屏幕大小自动适配
+- 🎨 **主题一致性** - 每个UI库保持独立的设计风格
 
 ## 🚀 部署
 
@@ -351,6 +396,110 @@ module.exports = {
 @primary-color: #your-color;  // 自定义主题色
 @font-size-base: 16px;        // 自定义基础字体大小
 \`\`\`
+
+## 🔄 双UI库使用指南
+
+项目集成了 Element Plus 和 View UI Plus 两个UI组件库，提供灵活的选择：
+
+### 自动导入配置
+
+Vite 已配置自动导入两个UI库的组件：
+
+\`\`\`typescript
+// vite.config.ts
+import { ElementPlusResolver, ViewUiResolver } from 'unplugin-vue-components/resolvers'
+
+export default defineConfig({
+  plugins: [
+    AutoImport({
+      resolvers: [
+        ElementPlusResolver(),
+        ViewUiResolver()
+      ]
+    }),
+    Components({
+      resolvers: [
+        ElementPlusResolver(),
+        ViewUiResolver()
+      ]
+    })
+  ]
+})
+\`\`\`
+
+### Element Plus 使用示例
+
+\`\`\`vue
+<template>
+  <!-- 使用 el- 前缀 -->
+  <el-button type="primary">Element Plus 按钮</el-button>
+  <el-input v-model="value" placeholder="请输入内容" />
+  <el-table :data="tableData">
+    <el-table-column prop="name" label="姓名" />
+  </el-table>
+</template>
+
+<script setup lang="ts">
+import { ref } from 'vue'
+import { ElMessage } from 'element-plus'
+
+const value = ref('')
+const handleClick = () => {
+  ElMessage.success('操作成功')
+}
+</script>
+\`\`\`
+
+### View UI Plus 使用示例
+
+\`\`\`vue
+<template>
+  <!-- 直接使用组件名 -->
+  <Button type="primary">View UI Plus 按钮</Button>
+  <Input v-model="value" placeholder="请输入内容" />
+  <Table :columns="columns" :data="tableData" />
+</template>
+
+<script setup lang="ts">
+import { ref } from 'vue'
+import { Message } from 'view-ui-plus'
+
+const value = ref('')
+const handleClick = () => {
+  Message.success('操作成功')
+}
+</script>
+\`\`\`
+
+### UI库切换
+
+项目提供了智能的UI库切换功能：
+
+1. **顶部标签切换**: 点击顶部的 "Element Plus" 或 "View UI Plus" 标签
+2. **自动路由切换**: 访问对应的演示页面会自动切换UI库风格
+3. **独立导航样式**: 每个UI库使用独立的导航样式和主题色
+
+### 选择建议
+
+#### 选择 Element Plus 适合：
+- 🏢 大型企业应用
+- 📊 数据密集型系统
+- 🎨 需要深度定制的项目
+- 🌍 多语言国际化需求
+
+#### 选择 View UI Plus 适合：
+- 🚀 快速原型开发
+- 💼 中小型管理系统
+- ⚡ 注重性能和体积
+- 📱 简洁的界面需求
+
+### 混合使用注意事项
+
+虽然项目支持两个UI库，但建议：
+
+1. **避免在同一组件中混用** - 保持样式一致性
+2. **按模块选择** - 不同模块可以使用不同的UI库
+3. **统一命名规范** - Element Plus 使用 \`el-\` 前缀，View UI Plus 直接使用组件名
 
 ## 📄 许可证
 

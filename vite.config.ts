@@ -20,7 +20,36 @@ export default defineConfig({
       dts: true
     }),
     Components({
-      resolvers: [ElementPlusResolver()],
+      resolvers: [
+        ElementPlusResolver(),
+        // View UI Plus 自定义解析器
+        (componentName) => {
+          // View UI Plus 组件映射
+          const viewUiComponents = [
+            'Button', 'Input', 'Select', 'Option', 'Radio', 'RadioGroup',
+            'Checkbox', 'CheckboxGroup', 'Switch', 'DatePicker', 'TimePicker',
+            'Form', 'FormItem', 'Table', 'Tabs', 'TabPane', 'Card', 'Modal',
+            'Message', 'Notice', 'Progress', 'Tag', 'Badge', 'Alert', 'Loading',
+            'Spin', 'Icon', 'Avatar', 'Breadcrumb', 'BreadcrumbItem', 'Steps',
+            'Step', 'Menu', 'MenuItem', 'Submenu', 'MenuGroup', 'Dropdown',
+            'DropdownMenu', 'DropdownItem', 'Tooltip', 'Popover', 'Tree',
+            'Upload', 'Rate', 'Circle', 'Row', 'Col', 'Layout', 'Header',
+            'Sider', 'Content', 'Footer', 'Affix', 'BackTop', 'Anchor',
+            'AnchorLink', 'Divider', 'Split', 'Cell', 'CellGroup', 'List',
+            'ListItem', 'ListItemMeta', 'Carousel', 'CarouselItem', 'Collapse',
+            'Panel', 'Timeline', 'TimelineItem', 'Space', 'Drawer', 'Page',
+            'Transfer', 'ColorPicker', 'Cascader', 'AutoComplete', 'InputNumber',
+            'Slider', 'Poptip', 'Time', 'Skeleton'
+          ]
+          
+          if (viewUiComponents.includes(componentName)) {
+            return {
+              name: componentName,
+              from: 'view-ui-plus'
+            }
+          }
+        }
+      ],
       dts: true
     })
   ],

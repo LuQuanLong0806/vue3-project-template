@@ -43,6 +43,30 @@ const routes: RouteRecordRaw[] = [
     }
   },
   {
+    path: '/element',
+    name: 'ElementDemo',
+    component: () => import('@/views/ElementDemo.vue'),
+    meta: {
+      title: 'Element Plus组件库演示'
+    }
+  },
+  {
+    path: '/viewui',
+    name: 'ViewUiDemo',
+    component: () => import('@/views/ViewUiDemo.vue'),
+    meta: {
+      title: 'View UI Plus组件库演示'
+    }
+  },
+  {
+    path: '/comparison',
+    name: 'UIComparison',
+    component: () => import('@/views/UIComparison.vue'),
+    meta: {
+      title: 'UI组件库对比'
+    }
+  },
+  {
     path: '/:pathMatch(.*)*',
     name: 'NotFound',
     component: () => import('@/views/NotFound.vue'),
